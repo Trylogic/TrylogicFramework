@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>ru.trylogic</groupId>
+	<artifactId>trylogic-framework-parent</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+
+	<profiles>
+		<profile>
+			<id>debug</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<ru.trylogic.framework.debug>true</ru.trylogic.framework.debug>
+			</properties>
+		</profile>
+		<profile>
+			<id>release</id>
+			<properties>
+				<ru.trylogic.framework.debug>false</ru.trylogic.framework.debug>
+			</properties>
+		</profile>
+	</profiles>
+
+	<modules>
+		<module>modules/TrylogicUtils</module>
+		<module>modules/Insulin</module>
+		<module>modules/GlobalDispatcher</module>
+		<module>modules/UniTouch</module>
+		<module>modules/TrylogicGUI</module>
+		<module>modules/TrylogicCore</module>
+	</modules>
+
+	<properties>
+		<flexmojos.version>4.2-beta</flexmojos.version>
+		<flex.framework.version>4.6.b.23201</flex.framework.version>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.sonatype.flexmojos</groupId>
+				<artifactId>flexmojos-maven-plugin</artifactId>
+				<version>${flexmojos.version}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<storepass/>
+					<skipTest>true</skipTest>
+					<skipTests>true</skipTests>
+					<debug>${ru.trylogic.framework.debug}</debug>
+					<optimize>true</optimize>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>com.adobe.flex</groupId>
+						<artifactId>compiler</artifactId>
+						<version>${flex.framework.version}</version>
+						<type>pom</type>
+						<exclusions>
+							<exclusion>
+								<groupId>com.adobe.flex.framework</groupId>
+								<artifactId>playerglobal</artifactId>
+							</exclusion>
+						</exclusions>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.adobe.flex.framework</groupId>
+			<artifactId>flex-framework</artifactId>
+			<version>${flex.framework.version}</version>
+			<type>pom</type>
+			<scope>external</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.adobe.flex.framework</groupId>
+			<artifactId>playerglobal</artifactId>
+			<version>${flex.framework.version}</version>
+			<classifier>11.1</classifier>
+			<type>swc</type>
+			<scope>external</scope>
+		</dependency>
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>flex-mojos-repository</id>
+			<url>http://repository.sonatype.org/content/groups/flexgroup/</url>
+		</repository>
+
+		<repository>
+			<id>trylogic</id>
+			<name>Trylogic</name>
+			<url>http://repo.trylogic.ru/content/repositories/public/</url>
+		</repository>
+
+		<repository>
+			<id>trylogic-releases</id>
+			<name>Trylogic releases</name>
+			<url>http://repo.trylogic.ru/content/repositories/releases/</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>flex-mojos-repository</id>
+			<url>http://repository.sonatype.org/content/groups/flexgroup/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>trylogic</id>
+			<name>Trylogic</name>
+			<url>http://repo.trylogic.ru/content/repositories/public/</url>
+		</snapshotRepository>
+		<repository>
+			<id>trylogic-releases</id>
+			<name>Trylogic releases</name>
+			<url>http://repo.trylogic.ru/content/repositories/releases/</url>
+		</repository>
+	</distributionManagement>
+</project>

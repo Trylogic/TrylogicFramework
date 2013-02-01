@@ -1,0 +1,18 @@
+[submodule "modules/TrylogicCore"]
+	path = modules/TrylogicCore
+	url = https://github.com/Trylogic/TrylogicCore.git
+[submodule "modules/Insulin"]
+	path = modules/Insulin
+	url = https://github.com/Trylogic/Insulin.git
+[submodule "modules/TrylogicGUI"]
+	path = modules/TrylogicGUI
+	url = https://github.com/Trylogic/TrylogicGUI.git
+[submodule "modules/GlobalDispatcher"]
+	path = modules/GlobalDispatcher
+	url = https://github.com/Trylogic/GlobalDispatcher.git
+[submodule "modules/UniTouch"]
+	path = modules/UniTouch
+	url = https://github.com/Trylogic/UniTouch.git
+[submodule "modules/TrylogicUtils"]
+	path = modules/TrylogicUtils
+	url = https://github.com/Trylogic/TrylogicUtils.git
